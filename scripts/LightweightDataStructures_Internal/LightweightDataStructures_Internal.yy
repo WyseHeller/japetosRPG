@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LightweightDataStructures_Internal",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LightweightDataStructures_Internal",
+  "parent":{
+    "name":"LightweightDataStructures",
+    "path":"folders/System/Extensions/LightweightDataStructures.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

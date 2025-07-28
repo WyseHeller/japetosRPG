@@ -1,0 +1,1 @@
+draw_sprite(SprPortraitJerma, 0, 0, 0);

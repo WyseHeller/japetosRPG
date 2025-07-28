@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ScriptLibraryGMST",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ScriptLibraryGMST",
+  "parent":{
+    "name":"Core",
+    "path":"folders/System/Core.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

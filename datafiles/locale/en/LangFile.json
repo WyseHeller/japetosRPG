@@ -1,0 +1,107 @@
+{
+	"MenuOptions":
+	{
+		"OptionStringNameContinue": "Continue",
+		"OptionStringNameNewGame": "New Game",
+		"OptionStringNameSettings": "Settings",
+		"OptionStringNameResume": "Resume",
+		"OptionStringNameQuitToMainMenu": "Quit to Main Menu",
+		"OptionStringNameQuitToDesktop": "Quite to Desktop"
+	},
+	"MenuStartup":
+	{
+		"StartupBlurb": "human civilization has collapsed."
+	},
+	
+	"InterfacePipboy":
+	{
+		"TabStringNameStat": "Stat",
+		"TabStat":
+		{
+			"SubTabStringNameFactions": "Factions"
+		},
+		"TabStringNameInventory": "Item",
+		"TabInventory":
+		{
+			"SubTabStringNameWeaponsMelee": "Melee Weapons",
+			"SubTabStringNameWeaponsMissile": "Missile Weapons",
+			"SubTabStringNameApparel": "Apparel",
+			"SubTabStringNameAid": "Aid",
+			"SubTabStringNameMisc": "Misc"
+		},
+		"TabStringNameData": "Data",
+		"TabStringNameMap": "Map",
+		"TabStringNameRadio": "Radio"
+	},
+	"MenuFight":
+	{
+		"OptionStringNameFight": "Fight",
+		"OptionStringNameReposition": "Reposition",
+		"OptionStringNameRun": "Run"
+	},
+	
+	"EntityAttributes":
+	{
+		"StatHealth": "Health",
+		"StatMana": "Mana",
+		"StatWealth": "Wealth",
+		"StatStrength": "Strength",
+		"StatDexterity": "Dexterity",
+		"ClassStringNameWarrior": "Linear",
+		"ClassStringNameRanger": "Approximation",
+		"ClassStringNameWizard": "Quadratic",
+		"RaceStringNameHuman": "H. domesticus",
+		"RaceStringNameLowGravity": "H. inermis",
+		"RaceStringNameCyborg": "H. inquinatus",
+		"RaceStringNameSuperSoldier": "H. necans",
+		"RaceStringNameFurry": "H. animalis",
+		"RaceStringNameAmaglam": "H. combinans",
+		"RaceStringNameDemon": "H. demens"
+	},
+	
+	"ItemAttributes":
+	{
+		"ItemCategory":
+		{
+			
+		},
+		"WeaponType":
+		{
+			"StringNameAxe": "axe",
+			"StringNameCudgel": "cdgel",
+			"StringNameBladeLong": "long blade",
+			"StringNameBladeShort": "short blade",
+			"StringNamePolearm": "polearm",
+			"StringNamePistol": "pistol",
+			"StringNameRifle": "rifles",
+			"StringNameBow": "bow"
+		}
+	},
+	
+	"Materials":
+	{
+		"MaterialStringNameCopper": "Copper",
+		"MaterialStringNameBronze": "Bronze",
+		"MaterialStringNameIron": "Iron",
+		"MaterialStringNameSteel": "Steel",
+		"MaterialStringNameCarbide": "Carbide",
+		"MaterialStringNameGraphene": "Fullerite",
+		"MaterialsStringNameAmorphousMetal": "Metglass",
+		"MaterialsStringNameQuarkSoup": "QuarkSoup"
+	},
+	
+	"Dialogue":
+	{
+		"GreetingGeneric":
+		{
+			"StringDefaultGreeting": "Hello."
+		},
+		
+		"DialogueChatterJoke":
+		{
+			"DialogueStringChatterJokeNuclearWinter": "Patrolling the mojave almost makes me wish for a nuclear winter.",
+			"DialogueStringChatterJokeElves": "Have you heard of the high elves?",
+			"DialogueStringChatterJokeStrongNordWoman": "What? Can't stand the sight of a strong Nord woman?"
+		}
+	}
+}

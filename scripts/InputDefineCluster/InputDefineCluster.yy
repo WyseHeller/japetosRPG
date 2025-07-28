@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"InputDefineCluster",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"InputDefineCluster",
+  "parent":{
+    "name":"Input",
+    "path":"folders/System/Extensions/Extensions_config/Input.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

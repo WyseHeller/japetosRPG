@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LightweightSerializers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LightweightSerializers",
+  "parent":{
+    "name":"LightweightDataStructures",
+    "path":"folders/System/Extensions/LightweightDataStructures.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

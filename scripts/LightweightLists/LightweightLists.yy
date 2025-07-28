@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"LightweightLists",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"LightweightLists",
+  "parent":{
+    "name":"LightweightDataStructures",
+    "path":"folders/System/Extensions/LightweightDataStructures.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

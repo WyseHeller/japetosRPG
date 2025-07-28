@@ -1,0 +1,2 @@
+# put the folder to draw localization from here
+en
