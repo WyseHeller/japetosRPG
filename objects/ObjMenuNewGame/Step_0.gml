@@ -8,8 +8,8 @@ if(!TimerInput.is_expired())
 var _page = menu_page;
 var _cursor = menu_cursor;
 
-var _xaxis = ceil(InputX(INPUT_CLUSTER.NAVIGATION));
-var _yaxis = ceil(InputY(INPUT_CLUSTER.NAVIGATION));
+var _xaxis = ceil(InputCheck(INPUT_VERB.MOVE_E) - InputCheck(INPUT_VERB.MOVE_W));
+var _yaxis = ceil(InputCheck(INPUT_VERB.MOVE_S) - InputCheck(INPUT_VERB.MOVE_N));
 
 if(_xaxis != 0 || _yaxis != 0)
 {

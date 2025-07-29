@@ -5,11 +5,11 @@ if(!TIMER_INPUT.is_expired())
 else
 {
 
-	var _yaxis = InputX(INPUT_CLUSTER.NAVIGATION);
+	var _yaxis = ceil(InputCheck(INPUT_VERB.MOVE_S) - InputCheck(INPUT_VERB.MOVE_N));
 
 	if(_yaxis != 0)
 	{
-		menu_cursor = top(menu_cursor + _yaxis,, array_length(MenuData) - 1);
+		menu_cursor = wrap(menu_cursor + _yaxis,, array_length(MenuData) - 1);
 		TIMER_INPUT.set_timer();
 	}
 

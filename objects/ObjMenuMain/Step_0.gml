@@ -29,7 +29,7 @@ else
 			}
 		break;
 		case 1:
-			var _yaxis = InputY(INPUT_CLUSTER.NAVIGATION); // get y axis input
+			var _yaxis = InputCheck(INPUT_VERB.MOVE_S) - InputCheck(INPUT_VERB.MOVE_N);
 	
 			if(_yaxis != 0) // if player input
 			{

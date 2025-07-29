@@ -12,4 +12,6 @@ CAMERA = -1;
 PlayerID = undefined;
 PlayerInventory = new List();
 
+TimerInputSafety = new Timer(INPUT_DELAY);
+
 __debug_log_write("[Init] System Controller Loaded.");

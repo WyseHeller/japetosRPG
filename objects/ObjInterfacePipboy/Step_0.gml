@@ -11,8 +11,8 @@ else
         instance_destroy(); // deactivate interface
     }
     
-    var _xaxis = InputX(INPUT_CLUSTER.NAVIGATION); // get x axis input
-    var _yaxis = InputY(INPUT_CLUSTER.NAVIGATION); // get y axis input
+    var _xaxis = 0;
+    var _yaxis = 0;
     
     if(_xaxis != 0 || _yaxis != 0) // if any player input
     {
