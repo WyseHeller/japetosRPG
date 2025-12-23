@@ -31,7 +31,7 @@ function __scribble_gen_8_position_glyphs()
     {
         var _page_data = __pages_array[_i];
         
-        if (SCRIBBLE_PIN_ALIGNMENT_USES_PAGE_SIZE)
+        if (SCRIBBLE_PIN_ALIGNMENT_USES_page_SIZE)
         {
             var _alignment_width     = _page_data.__width;
             var _pin_alignment_width = _page_data.__width;

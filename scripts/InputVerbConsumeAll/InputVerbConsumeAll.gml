@@ -11,14 +11,14 @@ function InputVerbConsumeAll(_playerIndex = 0)
     static _playerArray = __InputSystemPlayerArray();
     static _verbCount   = __InputSystem().__verbCount;
     
-    if (_playerIndex == undefined) return;
+    __INPUT_VALIDATE_PLAYER_INDEX
     
     with(_playerArray[_playerIndex])
     {
         var _i = 0;
         repeat(_verbCount)
         {
-            InputVerbConsume(_i);
+            InputVerbConsume(_i, _playerIndex);
             ++_i;
         }
     }

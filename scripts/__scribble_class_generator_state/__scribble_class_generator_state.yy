@@ -6,7 +6,7 @@
   "name":"__scribble_class_generator_state",
   "parent":{
     "name":"Initialization",
-    "path":"folders/System/Extensions/Scribble/(System - don't call these functions)/Initialization.yy",
+    "path":"folders/1_System/3_Extensions/Scribble/(System - don't call these functions)/Initialization.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

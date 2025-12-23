@@ -6,7 +6,7 @@
   "name":"InputDeviceGetPlayerUsingGeneric",
   "parent":{
     "name":"Device",
-    "path":"folders/System/Extensions/Input/Device.yy",
+    "path":"folders/1_System/3_Extensions/Input/Device.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

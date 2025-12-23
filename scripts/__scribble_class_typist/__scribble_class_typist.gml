@@ -504,7 +504,7 @@ function __scribble_class_typist(_per_line) constructor
                 case "pause":
                     if (!__skip && !__sync_started) || (!__skip_paused)
                     {
-                        if (SCRIBBLE_IGNORE_PAUSE_BEFORE_PAGEBREAK && (__last_character >= _character_count) && (array_length(__event_stack) <= 0))
+                        if (SCRIBBLE_IGNORE_PAUSE_BEFORE_pageBREAK && (__last_character >= _character_count) && (array_length(__event_stack) <= 0))
                         {
                             __scribble_trace("Warning! Ignoring [pause] command before the end of a page");
                         }

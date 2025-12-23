@@ -6,7 +6,7 @@
   "name":"InputBindingsReset",
   "parent":{
     "name":"Rebinding",
-    "path":"folders/System/Extensions/Input/Rebinding.yy",
+    "path":"folders/1_System/3_Extensions/Input/Rebinding.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

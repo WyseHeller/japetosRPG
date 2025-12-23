@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"GfxClassWarrior",
   "bboxMode":0,
   "bbox_bottom":519,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"491080ad-ac4d-4dc6-b72d-cce0d5c7be9f","name":"491080ad-ac4d-4dc6-b72d-cce0d5c7be9f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"900a9acf-f531-4243-a6e0-68bd70a636bb","name":"900a9acf-f531-4243-a6e0-68bd70a636bb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"491080ad-ac4d-4dc6-b72d-cce0d5c7be9f","name":"491080ad-ac4d-4dc6-b72d-cce0d5c7be9f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"900a9acf-f531-4243-a6e0-68bd70a636bb","name":"900a9acf-f531-4243-a6e0-68bd70a636bb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Startup",
-    "path":"folders/Graphics/Interface/Startup.yy",
+    "name":"4_Classes & Races",
+    "path":"folders/4_User Interfaces/9_Graphics/2_Portraits/4_Classes & Races.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

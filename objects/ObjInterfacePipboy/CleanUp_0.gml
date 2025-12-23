@@ -1,1 +1,0 @@
-__debug_log_write("[Interface] Pipboy interface cleaned up.");

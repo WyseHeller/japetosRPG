@@ -119,9 +119,10 @@
 
 function InputVerbGetBindingName(_verbIndex, _alternate = 0, _playerIndex = 0, _missingBindingName = "???")
 {
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
     var _forGamepad = InputPlayerUsingGamepad(_playerIndex);
     return InputGetBindingName(InputBindingGet(_forGamepad, _verbIndex, _alternate, _playerIndex),
-                                  _forGamepad,
-                                  InputPlayerGetLastConnectedGamepadType(_playerIndex),
-                                  _missingBindingName);
+                               _forGamepad,
+                               _missingBindingName);
 }

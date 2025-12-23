@@ -6,7 +6,7 @@
   "name":"TGM_Strings",
   "parent":{
     "name":"Code",
-    "path":"folders/System/Extensions/TurboGML/Code.yy",
+    "path":"folders/1_System/3_Extensions/TurboGML/Code.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"__InputConstants",
   "parent":{
     "name":"Input",
-    "path":"folders/System/Extensions/Input.yy",
+    "path":"folders/1_System/3_Extensions/Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

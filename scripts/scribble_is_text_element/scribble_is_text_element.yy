@@ -6,7 +6,7 @@
   "name":"scribble_is_text_element",
   "parent":{
     "name":"Miscellaneous",
-    "path":"folders/System/Extensions/Scribble/Miscellaneous.yy",
+    "path":"folders/1_System/3_Extensions/Scribble/Miscellaneous.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

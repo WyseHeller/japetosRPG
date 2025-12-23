@@ -6,7 +6,7 @@
   "name":"__scribble_misc_functions",
   "parent":{
     "name":"(System - don't call these functions)",
-    "path":"folders/System/Extensions/Scribble/(System - don't call these functions).yy",
+    "path":"folders/1_System/3_Extensions/Scribble/(System - don't call these functions).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

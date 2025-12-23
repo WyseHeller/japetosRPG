@@ -6,7 +6,7 @@
   "name":"InputClusterResetMetadata",
   "parent":{
     "name":"Verb Interaction",
-    "path":"folders/System/Extensions/Input/Verb Interaction.yy",
+    "path":"folders/1_System/3_Extensions/Input/Verb Interaction.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

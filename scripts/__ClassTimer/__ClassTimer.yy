@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__ClassTimer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__ClassTimer",
+  "parent":{
+    "name":"2_Classes",
+    "path":"folders/1_System/2_Core/2_Classes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

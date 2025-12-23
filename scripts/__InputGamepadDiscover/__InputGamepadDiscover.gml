@@ -11,7 +11,7 @@ function __InputGamepadDiscover(_gamepadStruct)
     {
         var _device = __gamepadIndex;
         
-        __InputTrace("Discovering gamepad = \"", gamepad_get_description(_device), "\", GUID=\"", gamepad_get_guid(_device), "\", buttons = ", gamepad_button_count(_device), ", axes = ", gamepad_axis_count(_device), ", hats = ", gamepad_hat_count(_device));
+        __InputTrace("Discovering gamepad ", _device, ", desc=\"", gamepad_get_description(_device), "\", GUID=\"", gamepad_get_guid(_device), "\", buttons = ", gamepad_button_count(_device), ", axes = ", gamepad_axis_count(_device), ", hats = ", gamepad_hat_count(_device));
         
         __guid         = gamepad_get_guid(_device);
         __description  = gamepad_get_description(_device);
@@ -22,7 +22,6 @@ function __InputGamepadDiscover(_gamepadStruct)
             __type = __InputGamepadIdentifySwitchType(_device, __description);
             
             //Going full custom
-            //TODO - Requires testing
             InputPlugInGamepadNullifyAllMappings(_device);
             
             InputPlugInGamepadResetMapping(_device, gp_start);
@@ -114,28 +113,11 @@ function __InputGamepadDiscover(_gamepadStruct)
         else //Not console
         {
             //Unpack the vendor/product IDs from the gamepad's GUID
-            if (INPUT_ON_WINDOWS)
-            {
-                var _legacy = __InputStringContains(__guid, "000000000000504944564944"); //"PIDVID"
-                var _result = __InputGamepadGUIDParse(__guid, _legacy);
-                
-                __vendor  = _result.__vendor;
-                __product = _result.__product;
-                if (_result.__description != undefined) __description = _result.__description;
-                
-                if ((_device < 4) && (not __InputStringContains(__guid, "000000007801"))) //"H" (HID)
-                {
-                    __xinput = true;
-                }
-            }
-            else if (INPUT_ON_MACOS || INPUT_ON_LINUX)
-            {
-                var _result = __InputGamepadGUIDParse(__guid, false);
-                
-                __vendor  = _result.__vendor;
-                __product = _result.__product;
-                if (_result.__description != undefined) __description = _result.__description;
-            }
+            var _result = __InputGamepadGUIDParse(__guid);
+            __vendor  = _result.__vendor;
+            __product = _result.__product;
+            
+            __xinput = (INPUT_ON_WINDOWS && (_device < 4) && (not __InputStringContains(__guid, "000000007801"))); //"H" (HID)
             
             //Force type if it's an XInput device
             if (__xinput)
@@ -145,7 +127,22 @@ function __InputGamepadDiscover(_gamepadStruct)
             }
             else
             {
-                __type = _typeLookupStruct[$ __vendor + __product] ?? INPUT_GAMEPAD_TYPE_XBOX;
+                __InputTrace("Identifying gamepad type using VID + PID \"", __vendor + __product, "\"");
+                __type = _typeLookupStruct[$ __vendor + __product];
+                
+                if (__type == undefined)
+                {
+                    __InputTrace("Unsuccessful; identifying gamepad using description \"", __description, "\"");
+                    __type = __InputGamepadIdentifyDescriptionType(__description);
+                    
+                    if (__type == undefined)
+                    {
+                        __InputTrace("Unsuccessful; using fallback type");
+                        __type = INPUT_GAMEPAD_FALLBACK_TYPE;
+                    }
+                }
+                
+                __InputTrace("Gamepad type decided as ", __type);
             }
             
             //Read Steam Input values and modify our gamepad representation to match

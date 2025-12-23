@@ -639,8 +639,8 @@ function __scribble_class_element(_string, _unique_id) constructor
         var _model = __get_model(true);
         if (!is_struct(_model)) return undefined;
         
-        var _page         = _model.__pages_array[__page];
-        var _region_array = _page.__region_array;
+        var _MenuPage         = _model.__pages_array[__page];
+        var _region_array = _MenuPage.__region_array;
         
         var _matrix = __update_matrix(_model, _element_x, _element_y);
         if (__matrix_inverse == undefined) __matrix_inverse = __scribble_matrix_inverse(matrix_multiply(_matrix, matrix_get(matrix_world)));
@@ -690,8 +690,8 @@ function __scribble_class_element(_string, _unique_id) constructor
         var _model = __get_model(true);
         if (!is_struct(_model)) return undefined;
         
-        var _page         = _model.__pages_array[__page];
-        var _region_array = _page.__region_array;
+        var _MenuPage         = _model.__pages_array[__page];
+        var _region_array = _MenuPage.__region_array;
         
         var _i = 0;
         repeat(array_length(_region_array))
@@ -771,7 +771,7 @@ function __scribble_class_element(_string, _unique_id) constructor
             var _yscale = __scale_to_box_scale*_model.__fit_scale*__post_yscale;
             
             //Left/top padding is baked into the model
-            var _bbox = _model.__get_bbox(SCRIBBLE_BOUNDING_BOX_USES_PAGE? __page : undefined, __padding_l, __padding_t, __padding_r, __padding_b);
+            var _bbox = _model.__get_bbox(SCRIBBLE_BOUNDING_BOX_USES_page? __page : undefined, __padding_l, __padding_t, __padding_r, __padding_b);
             
             __bbox_raw_width  = 1 + _bbox.right - _bbox.left;
             __bbox_raw_height = 1 + _bbox.bottom - _bbox.top;
@@ -978,26 +978,26 @@ function __scribble_class_element(_string, _unique_id) constructor
     #region Pages
     
     /// @param page
-    static page = function(_page)
+    static page = function(_MenuPage)
     {
         var _old_page = __page;
         
         var _model = __get_model(false);
         if (is_struct(_model))
         {
-            if (_page < 0)
+            if (_MenuPage < 0)
             {
                 __scribble_trace("Warning! Cannot set a text element's page to less than 0");
                 __page = 0;
             }
-            else if (_page > _model.__get_page_count()-1)
+            else if (_MenuPage > _model.__get_page_count()-1)
             {
                 __page = _model.__get_page_count()-1;
-                __scribble_trace("Warning! Page ", _page, " is too big. Valid pages are from 0 to ", __page, " (pages are 0-indexed)");
+                __scribble_trace("Warning! Page ", _MenuPage, " is too big. Valid pages are from 0 to ", __page, " (pages are 0-indexed)");
             }
             else
             {
-                __page = _page;
+                __page = _MenuPage;
             }
         }
         else
@@ -1048,42 +1048,42 @@ function __scribble_class_element(_string, _unique_id) constructor
     /// @param [page]
     static get_text = function()
     {
-        var _page = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : __page;
+        var _MenuPage = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : __page;
         
         var _model = __get_model(true);
         if (!is_struct(_model)) return 0;
-        return _model.__get_text(_page);
+        return _model.__get_text(_MenuPage);
     }
     
     /// @param [page]
     static get_glyph_data = function()
     {
         var _index = argument[0];
-        var _page  = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : __page;
+        var _MenuPage  = ((argument_count > 1) && (argument[1] != undefined))? argument[1] : __page;
         
         var _model = __get_model(true);
         if (!is_struct(_model)) return 0;
-        return _model.__get_glyph_data(_index, _page);
+        return _model.__get_glyph_data(_index, _MenuPage);
     }
     
     /// @param [page]
     static get_glyph_count = function()
     {
-        var _page = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : __page;
+        var _MenuPage = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : __page;
         
         var _model = __get_model(true);
         if (!is_struct(_model)) return 0;
-        return _model.__get_glyph_count(_page);
+        return _model.__get_glyph_count(_MenuPage);
     }
     
     /// @param [page]
     static get_line_count = function()
     {
-        var _page = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : __page;
+        var _MenuPage = ((argument_count > 0) && (argument[0] != undefined))? argument[0] : __page;
         
         var _model = __get_model(true);
         if (!is_struct(_model)) return 0;
-        return _model.__get_line_count(_page);
+        return _model.__get_line_count(_MenuPage);
     }
     
     #endregion
@@ -1381,8 +1381,8 @@ function __scribble_class_element(_string, _unique_id) constructor
         var _model = __get_model(true);
         if (!is_struct(_model)) return _empty_array;
         
-        var _page = _model.__pages_array[_page_index];
-        var _event_struct = _use_lines? _page.__line_events : _page.__char_events;
+        var _MenuPage = _model.__pages_array[_page_index];
+        var _event_struct = _use_lines? _MenuPage.__line_events : _MenuPage.__char_events;
         
         var _events = _event_struct[$ _position];
         if (!is_array(_events)) return _empty_array;

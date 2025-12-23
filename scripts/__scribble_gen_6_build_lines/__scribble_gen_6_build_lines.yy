@@ -6,7 +6,7 @@
   "name":"__scribble_gen_6_build_lines",
   "parent":{
     "name":"Generator",
-    "path":"folders/System/Extensions/Scribble/(System - don't call these functions)/Generator.yy",
+    "path":"folders/1_System/3_Extensions/Scribble/(System - don't call these functions)/Generator.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

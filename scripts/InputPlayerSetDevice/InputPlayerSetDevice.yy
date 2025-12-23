@@ -6,7 +6,7 @@
   "name":"InputPlayerSetDevice",
   "parent":{
     "name":"Player",
-    "path":"folders/System/Extensions/Input/Player.yy",
+    "path":"folders/1_System/3_Extensions/Input/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"InputSetHotswapCallback",
   "parent":{
     "name":"Hotswap",
-    "path":"folders/System/Extensions/Input/Hotswap.yy",
+    "path":"folders/1_System/3_Extensions/Input/Hotswap.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -518,7 +518,7 @@ enum __SCRIBBLE_GEN_LINE
     __HEIGHT,             //5
     __HALIGN,             //6
     __DISABLE_JUSTIFY,    //7
-    __STARTS_MANUAL_PAGE, //8
+    __STARTS_MANUAL_page, //8
     __SIZE,               //9
 }
 

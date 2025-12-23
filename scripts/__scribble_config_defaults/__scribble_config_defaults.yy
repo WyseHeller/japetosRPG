@@ -6,7 +6,7 @@
   "name":"__scribble_config_defaults",
   "parent":{
     "name":"Scribble",
-    "path":"folders/System/Extensions/Extensions_config/Scribble.yy",
+    "path":"folders/1_System/3_Extensions/__config/Scribble.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

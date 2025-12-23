@@ -1,10 +1,10 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"TilemapStandard",
   "bboxMode":0,
-  "bbox_bottom":383,
-  "bbox_left":0,
-  "bbox_right":255,
+  "bbox_bottom":31,
+  "bbox_left":24,
+  "bbox_right":71,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,11 +12,11 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"5e48a422-7ada-429c-bb44-8c8d7093234e","name":"5e48a422-7ada-429c-bb44-8c8d7093234e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5e48a422-7ada-429c-bb44-8c8d7093234e","name":"5e48a422-7ada-429c-bb44-8c8d7093234e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX":0,
-  "gridY":0,
-  "height":384,
+  "gridX":24,
+  "gridY":32,
+  "height":32,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"47eed301-705d-4b0e-ad33-68697a9f2eac","blendMode":0,"displayName":"default","isLocked":false,"name":"47eed301-705d-4b0e-ad33-68697a9f2eac","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Tilemaps",
-    "path":"folders/Graphics/Tilemaps.yy",
+    "name":"5_Tilemaps",
+    "path":"folders/3_Worldspace/9_Graphics/5_Tilemaps.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -88,5 +88,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":256,
+  "width":72,
 }

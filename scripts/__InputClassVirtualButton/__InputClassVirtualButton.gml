@@ -112,9 +112,14 @@ function __InputClassVirtualButton() constructor
                 draw_circle(_x, _y, _radius-2, true);
                 draw_circle(_x, _y, _radius-3, true);
                 draw_circle(_x, _y, _radius,   false);
-                
-                var _centre = InputXY(__verbLeft, __verbRight, __verbUp, __verbDown);
-                draw_circle(_x + _radius*_centre.x, _y + _radius*_centre.y, 0.25*_radius, false);
+
+                var _dx = InputValue(__verbRight) - InputValue(__verbLeft);
+                var _dy = InputValue(__verbDown) - InputValue(__verbUp);
+                var _distance = point_distance(0, 0, _dx, _dy);
+                var _direction = point_direction(0, 0, _dx, _dy);
+                var _centerX = lengthdir_x(_distance, _direction);
+                var _centerY = lengthdir_y(_distance, _direction);
+                draw_circle(_x + _radius*_centerX, _y + _radius*_centerY, 0.25*_radius, false);
             }
         }
         else
@@ -825,8 +830,8 @@ function __InputClassVirtualButton() constructor
             {
                 if (__verbClick != undefined)
                 {
-                    _valueRawArray[  __verbClick] = 1;
-                    _valueClampArray[__verbClick] = 1;
+                    _valueRawArray[@   __verbClick] = 1;
+                    _valueClampArray[@ __verbClick] = 1;
                 }
                 
                 __prevX = __touchX;
@@ -919,16 +924,16 @@ function __InputClassVirtualButton() constructor
                             {
                                 if (__verbDown != undefined)
                                 {
-                                    _valueRawArray[  __verbDown] = 1;
-                                    _valueClampArray[__verbDown] = 1;
+                                    _valueRawArray[@   __verbDown] = 1;
+                                    _valueClampArray[@ __verbDown] = 1;
                                 }
                             }
                             else
                             {
                                 if (__verbUp != undefined)
                                 {
-                                    _valueRawArray[  __verbUp] = 1;
-                                    _valueClampArray[__verbUp] = 1;
+                                    _valueRawArray[@   __verbUp] = 1;
+                                    _valueClampArray[@ __verbUp] = 1;
                                 }
                             }
                         break;
@@ -938,16 +943,16 @@ function __InputClassVirtualButton() constructor
                             {
                                 if (__verbRight != undefined)
                                 {
-                                    _valueRawArray[  __verbRight] = 1;
-                                    _valueClampArray[__verbRight] = 1;
+                                    _valueRawArray[@   __verbRight] = 1;
+                                    _valueClampArray[@ __verbRight] = 1;
                                 }
                             }
                             else
                             {
                                 if (__verbLeft != undefined)
                                 {
-                                    _valueRawArray[  __verbLeft] = 1;
-                                    _valueClampArray[__verbLeft] = 1;
+                                    _valueRawArray[@   __verbLeft] = 1;
+                                    _valueClampArray[@ __verbLeft] = 1;
                                 }
                             }
                         break;
@@ -960,32 +965,32 @@ function __InputClassVirtualButton() constructor
                                 case 0:
                                     if (__verbRight != undefined)
                                     {
-                                        _valueRawArray[  __verbRight] = 1;
-                                        _valueClampArray[__verbRight] = 1;
+                                        _valueRawArray[@   __verbRight] = 1;
+                                        _valueClampArray[@ __verbRight] = 1;
                                     }
                                 break;
                             
                                 case 1:
                                     if (__verbUp != undefined)
                                     {
-                                        _valueRawArray[  __verbUp] = 1;
-                                        _valueClampArray[__verbUp] = 1;
+                                        _valueRawArray[@   __verbUp] = 1;
+                                        _valueClampArray[@ __verbUp] = 1;
                                     }
                                 break;
                             
                                 case 2:
                                     if (__verbLeft != undefined)
                                     {
-                                        _valueRawArray[  __verbLeft] = 1;
-                                        _valueClampArray[__verbLeft] = 1;
+                                        _valueRawArray[@   __verbLeft] = 1;
+                                        _valueClampArray[@ __verbLeft] = 1;
                                     }
                                 break;
                             
                                 case 3:
                                     if (__verbDown != undefined)
                                     {
-                                        _valueRawArray[  __verbDown] = 1;
-                                        _valueClampArray[__verbDown] = 1;
+                                        _valueRawArray[@   __verbDown] = 1;
+                                        _valueClampArray[@ __verbDown] = 1;
                                     }
                                 break;
                             }
@@ -1001,8 +1006,8 @@ function __InputClassVirtualButton() constructor
                                 case 7:
                                     if (__verbRight != undefined)
                                     {
-                                        _valueRawArray[  __verbRight] = 1;
-                                        _valueClampArray[__verbRight] = 1;
+                                        _valueRawArray[@   __verbRight] = 1;
+                                        _valueClampArray[@ __verbRight] = 1;
                                     }
                                 break;
                                 
@@ -1011,8 +1016,8 @@ function __InputClassVirtualButton() constructor
                                 case 5:
                                     if (__verbLeft != undefined)
                                     {
-                                        _valueRawArray[  __verbLeft] = 1;
-                                        _valueClampArray[__verbLeft] = 1;
+                                        _valueRawArray[@   __verbLeft] = 1;
+                                        _valueClampArray[@ __verbLeft] = 1;
                                     }
                                 break;
                             }
@@ -1024,8 +1029,8 @@ function __InputClassVirtualButton() constructor
                                 case 3:
                                     if (__verbUp != undefined)
                                     {
-                                        _valueRawArray[  __verbUp] = 1;
-                                        _valueClampArray[__verbUp] = 1;
+                                        _valueRawArray[@   __verbUp] = 1;
+                                        _valueClampArray[@ __verbUp] = 1;
                                     }
                                 break;
                                 
@@ -1034,8 +1039,8 @@ function __InputClassVirtualButton() constructor
                                 case 7:
                                     if (__verbDown != undefined)
                                     {
-                                        _valueRawArray[  __verbDown] = 1;
-                                        _valueClampArray[__verbDown] = 1;
+                                        _valueRawArray[@   __verbDown] = 1;
+                                        _valueClampArray[@ __verbDown] = 1;
                                     }
                                 break;
                             }
@@ -1048,26 +1053,26 @@ function __InputClassVirtualButton() constructor
                             
                             if (__verbLeft != undefined)
                             {
-                                _valueRawArray[  __verbLeft] = max(0, -_dx);
-                                _valueClampArray[__verbLeft] = max(0, -_clampedX);
+                                _valueRawArray[@   __verbLeft] = max(0, -_dx);
+                                _valueClampArray[@ __verbLeft] = max(0, -_clampedX);
                             }
                             
                             if (__verbUp != undefined)
                             {
-                                _valueRawArray[  __verbUp] = max(0, -_dy);
-                                _valueClampArray[__verbUp] = max(0, -_clampedY);
+                                _valueRawArray[@   __verbUp] = max(0, -_dy);
+                                _valueClampArray[@ __verbUp] = max(0, -_clampedY);
                             }
                             
                             if (__verbRight != undefined)
                             {
-                                _valueRawArray[  __verbRight] = max(0, _dx);
-                                _valueClampArray[__verbRight] = max(0, _clampedX);
+                                _valueRawArray[@   __verbRight] = max(0, _dx);
+                                _valueClampArray[@ __verbRight] = max(0, _clampedX);
                             }
                             
                             if (__verbDown != undefined)
                             {
-                                _valueRawArray[  __verbDown] = max(0, _dy);
-                                _valueClampArray[__verbDown] = max(0, _clampedY);
+                                _valueRawArray[@   __verbDown] = max(0, _dy);
+                                _valueClampArray[@ __verbDown] = max(0, _clampedY);
                             }
                         break;
                         
@@ -1076,26 +1081,26 @@ function __InputClassVirtualButton() constructor
                             
                             if (__verbLeft != undefined)
                             {
-                                _valueRawArray[  __verbLeft] = max(0, -__normalizedX);
-                                _valueClampArray[__verbLeft] = max(0, -__normalizedX);
+                                _valueRawArray[@   __verbLeft] = max(0, -__normalizedX);
+                                _valueClampArray[@ __verbLeft] = max(0, -__normalizedX);
                             }
                             
                             if (__verbUp != undefined)
                             {
-                                _valueRawArray[  __verbUp] = max(0, -__normalizedY);
-                                _valueClampArray[__verbUp] = max(0, -__normalizedY);
+                                _valueRawArray[@   __verbUp] = max(0, -__normalizedY);
+                                _valueClampArray[@ __verbUp] = max(0, -__normalizedY);
                             }
                             
                             if (__verbRight != undefined)
                             {
-                                _valueRawArray[  __verbRight] = max(0, __normalizedX);
-                                _valueClampArray[__verbRight] = max(0, __normalizedX);
+                                _valueRawArray[@   __verbRight] = max(0, __normalizedX);
+                                _valueClampArray[@ __verbRight] = max(0, __normalizedX);
                             }
                             
                             if (__verbDown != undefined)
                             {
-                                _valueRawArray[  __verbDown] = max(0, __normalizedY);
-                                _valueClampArray[__verbDown] = max(0, __normalizedY);
+                                _valueRawArray[@   __verbDown] = max(0, __normalizedY);
+                                _valueClampArray[@ __verbDown] = max(0, __normalizedY);
                             }
                         break;
                     }

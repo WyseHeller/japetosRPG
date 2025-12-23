@@ -6,7 +6,7 @@
   "name":"InputPlugInGetFrame",
   "parent":{
     "name":"Plug-In API",
-    "path":"folders/System/Extensions/Input/Plug-In API.yy",
+    "path":"folders/1_System/3_Extensions/Input/Plug-In API.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

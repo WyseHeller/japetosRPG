@@ -28,11 +28,7 @@ function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verb
     
     if (GM_build_type == "run")
     {
-        var _callstack = debug_get_callstack(2);
-        var _previous = _callstack[1];
-        _previous = string_copy(_previous, 1, string_length("gml_Script___InputConfigVerbs"))
-        
-        if (_previous != "gml_Script___InputConfigVerbs")
+        if not (_system.__verbDefineAllowed)
         {
             __InputError("InputDefineCluster() must only be called in __InputConfigVerbs()");
         }
@@ -41,6 +37,6 @@ function InputDefineCluster(_clusterIndex, _verbUp, _verbRight, _verbDown, _verb
     with(_system)
     {
         var _definition = new __InputClassClusterDefinition(_clusterIndex, _verbUp, _verbRight, _verbDown, _verbLeft, _axisBiasFactor, _axisBiasDiagonals, _metadata);
-        __clusterDefinitionArray[_clusterIndex] = _definition;
+        __clusterDefinitionArray[@ _clusterIndex] = _definition;
     }
 }

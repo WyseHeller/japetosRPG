@@ -6,7 +6,7 @@
   "name":"LightweightStacks",
   "parent":{
     "name":"LightweightDataStructures",
-    "path":"folders/System/Extensions/LightweightDataStructures.yy",
+    "path":"folders/1_System/3_Extensions/LightweightDataStructures.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

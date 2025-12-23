@@ -6,7 +6,7 @@
   "name":"InputVirtualDebugDraw",
   "parent":{
     "name":"Virtual Buttons",
-    "path":"folders/System/Extensions/Input/Virtual Buttons.yy",
+    "path":"folders/1_System/3_Extensions/Input/Virtual Buttons.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

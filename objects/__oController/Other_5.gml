@@ -1,0 +1,1 @@
+if(CAMERA_ID != null) { camera_destroy(CAMERA_ID); }

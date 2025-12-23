@@ -6,7 +6,7 @@
   "name":"__InputCreateGamepadBindingNameLookup",
   "parent":{
     "name":"Initializing",
-    "path":"folders/System/Extensions/Input/(System)/Initializing.yy",
+    "path":"folders/1_System/3_Extensions/Input/(System)/Initializing.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

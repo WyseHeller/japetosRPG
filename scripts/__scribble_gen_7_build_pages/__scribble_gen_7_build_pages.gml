@@ -1,5 +1,5 @@
 // Feather disable all
-#macro __SCRIBBLE_GEN_PAGE_POP  _model_height = max(_model_height, _line_max_y);\
+#macro __SCRIBBLE_GEN_page_POP  _model_height = max(_model_height, _line_max_y);\
                                 var _page_end_line = _i - 1;\
                                 _page_data.__line_end    = _page_end_line;\
                                 _page_data.__line_count  = 1 + _page_data.__line_end - _page_data.__line_start;\
@@ -88,7 +88,7 @@ function __scribble_gen_7_build_pages()
     repeat(_line_count)
     {
         var _line_height        = _line_grid[# _i, __SCRIBBLE_GEN_LINE.__HEIGHT            ];
-        var _starts_manual_page = _line_grid[# _i, __SCRIBBLE_GEN_LINE.__STARTS_MANUAL_PAGE];
+        var _starts_manual_page = _line_grid[# _i, __SCRIBBLE_GEN_LINE.__STARTS_MANUAL_page];
         
         if (!_starts_manual_page && ((_line_y + _line_height < _simulated_model_height) || (_page_start_line >= _i)))
         {
@@ -98,7 +98,7 @@ function __scribble_gen_7_build_pages()
         }
         else
         {
-            __SCRIBBLE_GEN_PAGE_POP;
+            __SCRIBBLE_GEN_page_POP;
             
             // Create a new page
             _page_data = __new_page();
@@ -114,7 +114,7 @@ function __scribble_gen_7_build_pages()
         ++_i;
     }
     
-    __SCRIBBLE_GEN_PAGE_POP;
+    __SCRIBBLE_GEN_page_POP;
     
     __height = _model_height;
 }

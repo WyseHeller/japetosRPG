@@ -1,10 +1,16 @@
+// Feather disable all
+
+/// @param device
+/// @param ignoreStruct
+/// @param allowStruct
+
 function __InputBindingScan(_device, _ignoreStruct, _allowStruct)
 {
     static _system = __InputSystem();
     
     static _funcFilter = function(_input, _ignoreStruct, _allowStruct) //Returns <false> if the binding failed to pass the filter
     {
-        if (is_struct(_ignoreStruct) && variable_struct_exists(_ignoreStruct, string(_input))) return false;
+        if (variable_struct_exists(_ignoreStruct, string(_input))) return false;
         if (is_struct(_allowStruct) && (not variable_struct_exists(_allowStruct, string(_input)))) return false;
         return true;
     }
@@ -15,20 +21,7 @@ function __InputBindingScan(_device, _ignoreStruct, _allowStruct)
         {
             var _binding = __InputGetKeyboardOutput();
             if ((_binding != undefined) && _funcFilter(_binding, _ignoreStruct, _allowStruct))
-            {
-                ////On Mac we update the binding label to the actual keyboard character if it is a Basic Latin alphabetic character
-                ////This works around problems where a keyboard might be sending a character code for e.g. A but the OS is typing another letter
-                //if (INPUT_ON_MACOS)
-                //{
-                //    var _keychar = string_upper(keyboard_lastchar);
-                //                    
-                //    //Basic Latin only
-                //    if ((ord(_keychar) >= ord("A")) && (ord(_keychar) <= ord("Z")))
-                //    {
-                //        _result.labelOverride = _keychar; 
-                //    }
-                //}
-                
+            {                
                 return _binding;
             }
         }

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Must be called from within a INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER callback.
+/// Must be called from within a INPUT_PLUG_IN_CALLBACK.COLLECT_PLAYER callback.
 /// 
 /// @param {Enum.INPUT_VERB,Real} verbIndex
 /// @param {Any} value
@@ -12,14 +12,16 @@ function InputPlugInVerbSet(_verbIndex, _value, _rawValue = _value, _playerIndex
     static _system      = __InputSystem();
     static _playerArray = __InputSystemPlayerArray();
     
-    if (_system.__plugInCurrentCallback != INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER)
+    __INPUT_VALIDATE_PLAYER_INDEX
+    
+    if (_system.__plugInCurrentCallback != INPUT_PLUG_IN_CALLBACK.COLLECT_PLAYER)
     {
-        __InputError("Cannot call InputPlugInVerbSet() outside of a INPUT_PLUG_IN_CALLBACK.UPDATE_PLAYER callback");
+        __InputError("Cannot call InputPlugInVerbSet() outside of a INPUT_PLUG_IN_CALLBACK.COLLECT_PLAYER callback");
     }
     
-    with(_playerArray[_playerIndex].__verbStateArray[_verbIndex])
+    with(_playerArray[_playerIndex])
     {
-        __valueRaw   = _rawValue;
-        __valueClamp = _value;
+        __valueRawArray[@   _verbIndex] = _rawValue;
+        __valueClampArray[@ _verbIndex] = _value;
     }
 }

@@ -3,6 +3,8 @@
 #macro __INPUT_VERB_STATE_HEADER  "<PWP"
 #macro __INPUT_VERB_STATE_FOOTER  ">"
 
+#macro __INPUT_DEBUG_STEAM_INPUT  false
+
 #macro __INPUT_CONTROLLER_OBJECT_DEPTH  16001
 
 // Whether the game uses the horizontal holdtype for single Joy-Cons. Set this to `false` for
@@ -10,13 +12,61 @@
 // exclusive (come talk to us if you need to be able to swap at runtime).
 #macro __INPUT_SWITCH_JOYCON_HORIZONTAL_HOLDTYPE  true
 
+#macro __INPUT_VALIDATE_PLAYER_INDEX if (INPUT_SAFETY_CHECKS)\
+                                     {\
+                                         if (not is_numeric(_playerIndex))\
+                                         {\
+                                             __InputError("Player index must be a number (typeof = \"", typeof(_playerIndex), "\")");\
+                                         }\
+                                         if (_playerIndex >= INPUT_MAX_PLAYERS)\
+                                         {\
+                                             __InputError("Player index ", _playerIndex, " too large. Must be less than config `INPUT_MAX_PLAYERS` (", INPUT_MAX_PLAYERS, ")");\
+                                         }\
+                                         if (_playerIndex < 0)\
+                                         {\
+                                             __InputError("Player index ", _playerIndex, " less than zero");\
+                                         }\
+                                     }
+
+#macro __INPUT_VALIDATE_CLUSTER_INDEX if (INPUT_SAFETY_CHECKS)\
+                                     {\
+                                         if (not is_numeric(_clusterIndex))\
+                                         {\
+                                             __InputError("Cluster index must be a number (typeof = \"", typeof(_clusterIndex), "\")");\
+                                         }\
+                                         if (array_length(__clusterXArray) == 0)\
+                                         {\
+                                             __InputError("Cluster index ", _clusterIndex, " too large. No clusters are defined");\
+                                         }\
+                                         if (_clusterIndex >= array_length(__clusterXArray))\
+                                         {\
+                                             __InputError("Cluster index ", _clusterIndex, " too large. Must be within range of defined clusters (", array_length(__clusterXArray), ")");\
+                                         }\
+                                         if (_clusterIndex < 0)\
+                                         {\
+                                             __InputError("Cluster index ", _clusterIndex, " less than zero");\
+                                         }\
+                                     }
+
+#macro __INPUT_VALIDATE_CURSOR_CLUSTER if (INPUT_SAFETY_CHECKS)\
+                                     {\
+                                         if (not is_numeric(INPUT_CURSOR_CLUSTER))\
+                                         {\
+                                             __InputError("Cursor cluster index must be a number (typeof = \"", typeof(INPUT_CURSOR_CLUSTER), "\")");\
+                                         }\
+                                         if (INPUT_CURSOR_CLUSTER < 0)\
+                                         {\
+                                             __InputError("Cursor cluster index ", INPUT_CURSOR_CLUSTER, " less than zero");\
+                                         }\
+                                     }
+
 __InputSystem();
 function __InputSystem()
 {
     static _system = undefined;
     if (_system != undefined) return _system;
     
-    __InputTrace("Welcome to Input by Juju Adams, Alynne Keith, and friends! This is version " + INPUT_VERSION + ", " + INPUT_DATE);
+    __InputTrace("Welcome to Input by Juju Adams, Alynne Keith, and friends! This is version " + INPUT_VERSION + ", " + INPUT_DATE + " (GM version " + string(GM_runtime_version) + ")");
     
     device_mouse_dbclick_enable(false);
     
@@ -42,8 +92,15 @@ function __InputSystem()
         
         __gamepadArray = array_create(gamepad_get_device_count(), undefined);
         
+        __androidEnumerationTime = -infinity;
+        __restartTime            = -infinity;
+
+        //Flag for toggling InputDefineVerb() and InputDefineCluster() with __InputConfigVerbs()
+        __verbDefineAllowed = false;
+        
         //Master definitions for verbs
-        __verbDefinitionArray = [];
+        __verbDefinitionArray = []; //Contains structs for each verb definition
+        __verbDefIndexArray   = []; //Contains verb indexes for each verb definition. The verb index values are usually sequential and continuous but not always!
         __verbExportNameDict  = {};
         __verbCount           = 0;
         
@@ -83,14 +140,24 @@ function __InputSystem()
         __virtualOrderDirty  = false;
         __virtualButtonArray = [];
         
-        __plugInCurrentCallback = undefined;
-        __plugInCallbackArray = __InputSystemCallbackArray();
+        // 0 = Nothing happened yet, `InputPlugInDefine()` is permitted
+        // 1 = Initializing, `InputPlugInRegisterCallback()` is permitted
+        // 2 = Finished initializing
+        __plugInsInitializeState = 0;
+        
+        __plugInArray            = [];
+        __plugInDict             = {};
+        __plugInCurrentCallback  = undefined;
+        __plugInCallbackArray    = __InputSystemCallbackArray();
         
         __InputRegisterCollect();
+        __InputRegisterCollectPlayer();
         __InputRegisterUpdate();
+        __InputRegisterUpdatePlayer();
         __InputRegisterGamepadDisconnected();
         __InputRegisterGamepadConnected();
         __InputRegisterPlayerDeviceChanged();
+        __InputRegisterFindBindingCollisions();
         
         var _returnNull = function()
         {
@@ -143,29 +210,18 @@ function __InputSystem()
         ];
         
         
-        
+        __verbDefineAllowed = true;
         __InputConfigVerbs();
+        __verbDefineAllowed = false;
         
         
         
-        //Set a default device for player 0
-        if (INPUT_ON_MOBILE)
+        //Disable Windows IME
+        if (INPUT_ON_WINDOWS)
         {
-            InputPlayerSetDevice(INPUT_TOUCH);
+            keyboard_virtual_hide();
         }
-        else if (INPUT_ON_DESKTOP)
-        {
-            InputPlayerSetDevice(INPUT_KBM);
-        }
-        else if (INPUT_ON_CONSOLE)
-        {
-            var _i = 0;
-            repeat(gamepad_get_device_count())
-            {
-                if (InputDeviceIsConnected(_i)) InputPlayerSetDevice(_i);
-                ++_i;
-            }
-        }
+        
         
         //Create a time source if the library needs to self-manage
         if (INPUT_COLLECT_MODE != 2)
@@ -174,8 +230,7 @@ function __InputSystem()
             {
                 if (INPUT_COLLECT_MODE == 1)
                 {
-                    __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.COLLECT);
-                    if (INPUT_UPDATE_AFTER_COLLECT) __InputPlugInExecuteCallbacks(INPUT_PLUG_IN_CALLBACK.UPDATE);
+                    __InputCollect();
                 }
                 else if (INPUT_COLLECT_MODE == 0)
                 {
@@ -207,15 +262,22 @@ function __InputSystem()
                             }
                             else
                             {
-                                if (GM_build_type == "run")
+                                if (__restartTime == __time)
                                 {
-                                    //Be nasty when running from the IDE >:(
-                                    __InputError("__InputUpdateController has been destroyed\nPlease ensure that __InputUpdateController is never destroyed");
+                                    __InputTrace("Warning! Please consider an alternative method to reset game state: avoid using \"game_restart()\"");
                                 }
                                 else
-                                {
-                                    //Be nice when in production <:)
-                                    __InputTrace("Warning! __InputUpdateController has been destroyed. Please ensure that __InputUpdateController is never destroyed");
+                                {                                
+                                    if (GM_build_type == "run")
+                                    {
+                                        //Be nasty when running from the IDE >:(
+                                        __InputError("__InputUpdateController has been destroyed\nPlease ensure that __InputUpdateController is never destroyed");
+                                    }
+                                    else
+                                    {
+                                        //Be nice when in production <:)
+                                        __InputTrace("Warning! __InputUpdateController has been destroyed. Please ensure that __InputUpdateController is never destroyed");
+                                    }
                                 }
                             }
                 

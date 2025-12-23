@@ -6,7 +6,7 @@
   "name":"InputDefineVerb",
   "parent":{
     "name":"Input",
-    "path":"folders/System/Extensions/Extensions_config/Input.yy",
+    "path":"folders/1_System/3_Extensions/__config/Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -3,7 +3,7 @@
                                   _line_grid[# _line_count, __SCRIBBLE_GEN_LINE.__WORD_START        ] = _line_word_start;\
                                   _line_grid[# _line_count, __SCRIBBLE_GEN_LINE.__HALIGN            ] = _state_halign;\
                                   _line_grid[# _line_count, __SCRIBBLE_GEN_LINE.__DISABLE_JUSTIFY   ] = false;\
-                                  _line_grid[# _line_count, __SCRIBBLE_GEN_LINE.__STARTS_MANUAL_PAGE] = false;\
+                                  _line_grid[# _line_count, __SCRIBBLE_GEN_LINE.__STARTS_MANUAL_page] = false;\
                                   ;\ //Adjust the first word's width to account for visual tweaks
                                   ;\ //TODO - Implement for R2L text
                                   if ((SCRIBBLE_NEWLINES_PAD_LEFT_SPACE || SCRIBBLE_NEWLINES_TRIM_LEFT_SPACE) && (_word_grid[# _line_word_start, __SCRIBBLE_GEN_WORD.__BIDI] < __SCRIBBLE_BIDI.R2L))\
@@ -314,7 +314,7 @@ function __scribble_gen_6_build_lines()
                         _line_grid[# _line_count-1, __SCRIBBLE_GEN_LINE.__DISABLE_JUSTIFY] = true;
                         
                         //Only mark the new line as beginning a new page if this null *isn't* the last glyph for the input string
-                        if (_i < _word_count - 1) _line_grid[# _line_count, __SCRIBBLE_GEN_LINE.__STARTS_MANUAL_PAGE] = true;
+                        if (_i < _word_count - 1) _line_grid[# _line_count, __SCRIBBLE_GEN_LINE.__STARTS_MANUAL_page] = true;
                     }
                 }
                 

@@ -1,0 +1,1 @@
+draw_sprite(CutsceneSequence, image_index, 0, 0);

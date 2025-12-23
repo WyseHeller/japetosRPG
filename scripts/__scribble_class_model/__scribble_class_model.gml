@@ -60,13 +60,13 @@ function __scribble_class_model(_element, _model_cache_name) constructor
     
     
     
-    static __submit = function(_page, _double_draw)
+    static __submit = function(_MenuPage, _double_draw)
     {
         if (__flushed) return undefined;
         
         __last_drawn = __scribble_state.__frames;
         
-        __pages_array[_page].__submit((SCRIBBLE_ALWAYS_DOUBLE_DRAW || __has_arabic || __has_thai) && _double_draw);
+        __pages_array[_MenuPage].__submit((SCRIBBLE_ALWAYS_DOUBLE_DRAW || __has_arabic || __has_thai) && _double_draw);
     }
     
     static __freeze = function()
@@ -126,14 +126,14 @@ function __scribble_class_model(_element, _model_cache_name) constructor
     }
     
     /// @param page
-    static __get_bbox = function(_page, _padding_l, _padding_t, _padding_r, _padding_b)
+    static __get_bbox = function(_MenuPage, _padding_l, _padding_t, _padding_r, _padding_b)
     {
-        if (_page != undefined)
+        if (_MenuPage != undefined)
         {
-            if (_page < 0) __scribble_error("Page index ", _page, " doesn't exist. Minimum page index is 0");
-            if (_page >= __pages) __scribble_error("Page index ", _page, " doesn't exist. Maximum page index is ", __pages-1);
+            if (_MenuPage < 0) __scribble_error("Page index ", _MenuPage, " doesn't exist. Minimum page index is 0");
+            if (_MenuPage >= __pages) __scribble_error("Page index ", _MenuPage, " doesn't exist. Maximum page index is ", __pages-1);
             
-            var _page_data = __pages_array[_page];
+            var _page_data = __pages_array[_MenuPage];
             var _left   = _page_data.__min_x;
             var _top    = _page_data.__min_y;
             var _right  = _page_data.__max_x;
@@ -164,13 +164,13 @@ function __scribble_class_model(_element, _model_cache_name) constructor
     /// @param page
     /// @param startCharacter
     /// @param endCharacter
-    static __get_bbox_revealed = function(_page, _in_start, _in_end, _padding_l, _padding_t, _padding_r, _padding_b)
+    static __get_bbox_revealed = function(_MenuPage, _in_start, _in_end, _padding_l, _padding_t, _padding_r, _padding_b)
     {
         //TODO - Optimize by returning page bounds if the number of characters revealed is the same as the whole page
         
         if (!SCRIBBLE_ALLOW_GLYPH_DATA_GETTER) __scribble_error("Getting the revealed glyph bounding box requires SCRIBBLE_ALLOW_GLYPH_DATA_GETTER to be set to <true>");
         
-        var _glyph_grid = __get_glyph_data_grid(_page);
+        var _glyph_grid = __get_glyph_data_grid(_MenuPage);
         
         var _start = _in_start - 1;
         var _end   = _in_end   - 1;
@@ -204,13 +204,13 @@ function __scribble_class_model(_element, _model_cache_name) constructor
     }
     
     /// @page
-    static __get_width = function(_page)
+    static __get_width = function(_MenuPage)
     {
         return __fit_scale*__width;
     }
     
     /// @page
-    static __get_height = function(_page)
+    static __get_height = function(_MenuPage)
     {
         return __fit_scale*__height;
     }
@@ -226,23 +226,23 @@ function __scribble_class_model(_element, _model_cache_name) constructor
     }
     
     /// @param page
-    static __get_text = function(_page)
+    static __get_text = function(_MenuPage)
     {
-        if (_page < 0) __scribble_error("Page index ", _page, " doesn't exist. Minimum page index is 0");
-        if (_page >= __pages) __scribble_error("Page index ", _page, " doesn't exist. Maximum page index is ", __pages-1);
+        if (_MenuPage < 0) __scribble_error("Page index ", _MenuPage, " doesn't exist. Minimum page index is 0");
+        if (_MenuPage >= __pages) __scribble_error("Page index ", _MenuPage, " doesn't exist. Maximum page index is ", __pages-1);
         
         if (!SCRIBBLE_ALLOW_TEXT_GETTER) __scribble_error("Cannot get text, SCRIBBLE_ALLOW_TEXT_GETTER = <false>\nPlease set SCRIBBLE_ALLOW_TEXT_GETTER to <true> to get text");
         
-        return __pages_array[_page].__text;
+        return __pages_array[_MenuPage].__text;
     }
     
     /// @param page
-    static __get_glyph_data = function(_index, _page)
+    static __get_glyph_data = function(_index, _MenuPage)
     {
-        if (_page < 0) __scribble_error("Page index ", _page, " doesn't exist. Minimum page index is 0");
-        if (_page >= __pages) __scribble_error("Page index ", _page, " doesn't exist. Maximum page index is ", __pages-1);
+        if (_MenuPage < 0) __scribble_error("Page index ", _MenuPage, " doesn't exist. Minimum page index is 0");
+        if (_MenuPage >= __pages) __scribble_error("Page index ", _MenuPage, " doesn't exist. Maximum page index is ", __pages-1);
         
-        return __pages_array[_page].__get_glyph_data(_index);
+        return __pages_array[_MenuPage].__get_glyph_data(_index);
     }
     
     static __get_wrapped = function()
@@ -251,32 +251,32 @@ function __scribble_class_model(_element, _model_cache_name) constructor
     }
     
     /// @param page
-    static __get_line_count = function(_page)
+    static __get_line_count = function(_MenuPage)
     {
-        if (_page < 0) __scribble_error("Page index ", _page, " doesn't exist. Minimum page index is 0");
-        if (_page >= __pages) __scribble_error("Page index ", _page, " doesn't exist. Maximum page index is ", __pages-1);
+        if (_MenuPage < 0) __scribble_error("Page index ", _MenuPage, " doesn't exist. Minimum page index is 0");
+        if (_MenuPage >= __pages) __scribble_error("Page index ", _MenuPage, " doesn't exist. Maximum page index is ", __pages-1);
         
-        return __pages_array[_page].__line_count;
+        return __pages_array[_MenuPage].__line_count;
     }
     
     /// @param page
-    static __get_glyph_count = function(_page)
+    static __get_glyph_count = function(_MenuPage)
     {
-        if (_page < 0) __scribble_error("Page index ", _page, " doesn't exist. Minimum page index is 0");
-        if (_page >= __pages) __scribble_error("Page index ", _page, " doesn't exist. Maximum page index is ", __pages-1);
+        if (_MenuPage < 0) __scribble_error("Page index ", _MenuPage, " doesn't exist. Minimum page index is 0");
+        if (_MenuPage >= __pages) __scribble_error("Page index ", _MenuPage, " doesn't exist. Maximum page index is ", __pages-1);
         
         //N.B. Off by one since we consider the terminating null as a glyph for the purposes of typists
-        return __pages_array[_page].__glyph_count - 1;
+        return __pages_array[_MenuPage].__glyph_count - 1;
     }
     
-    static __get_glyph_data_grid = function(_page)
+    static __get_glyph_data_grid = function(_MenuPage)
     {
-        if (_page < 0) __scribble_error("Page index ", _page, " doesn't exist. Minimum page index is 0");
-        if (_page >= __pages) __scribble_error("Page index ", _page, " doesn't exist. Maximum page index is ", __pages-1);
+        if (_MenuPage < 0) __scribble_error("Page index ", _MenuPage, " doesn't exist. Minimum page index is 0");
+        if (_MenuPage >= __pages) __scribble_error("Page index ", _MenuPage, " doesn't exist. Maximum page index is ", __pages-1);
         
         if (!SCRIBBLE_ALLOW_GLYPH_DATA_GETTER) __scribble_error("Getting glyph data requires SCRIBBLE_ALLOW_GLYPH_DATA_GETTER to be set to <true>");
         
-        return __pages_array[_page].__glyph_grid;
+        return __pages_array[_MenuPage].__glyph_grid;
     }
     
     static __new_page = function()

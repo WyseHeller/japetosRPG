@@ -1,4 +1,4 @@
-/// feather disable all
+// Feather disable all
 
 /// Defines a verb and its default bindings for keyboard+mouse and gamepad. The `exportName`
 /// parameters defines the name of the verb when exported with InputBindingsExport().
@@ -27,11 +27,7 @@ function InputDefineVerb(_verbIndex, _exportName, _kbmBinding, _gamepadBinding, 
     
     if (GM_build_type == "run")
     {
-        var _callstack = debug_get_callstack(2);
-        var _previous = _callstack[1];
-        _previous = string_copy(_previous, 1, string_length("gml_Script___InputConfigVerbs"))
-        
-        if (_previous != "gml_Script___InputConfigVerbs")
+        if not (_system.__verbDefineAllowed)
         {
             __InputError("InputDefineVerb() must only be called in __InputConfigVerbs()");
         }
@@ -41,7 +37,12 @@ function InputDefineVerb(_verbIndex, _exportName, _kbmBinding, _gamepadBinding, 
     {
         var _definition = new __InputClassVerbDefinition(_verbIndex, _exportName, _kbmBinding, _gamepadBinding, _metadata);
         
-        __verbDefinitionArray[_verbIndex]   = _definition;
+        __verbDefinitionArray[@ _verbIndex]   = _definition;
         __verbExportNameDict[$ _exportName] = _definition;
+        
+        if (array_get_index(__verbDefIndexArray, _verbIndex) < 0)
+        {
+            array_push(__verbDefIndexArray, _verbIndex);
+        }
     }
 }

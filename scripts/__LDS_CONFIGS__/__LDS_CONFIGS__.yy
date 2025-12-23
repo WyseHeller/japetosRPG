@@ -6,7 +6,7 @@
   "name":"__LDS_CONFIGS__",
   "parent":{
     "name":"Lightweight Data Structures",
-    "path":"folders/System/Extensions/Extensions_config/Lightweight Data Structures.yy",
+    "path":"folders/1_System/3_Extensions/__config/Lightweight Data Structures.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

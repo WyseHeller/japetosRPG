@@ -1,10 +1,10 @@
 {
-  "$GMNotes":"",
+  "$GMNotes":"v1",
   "%Name":"TGM_Credits",
   "name":"TGM_Credits",
   "parent":{
     "name":"Others",
-    "path":"folders/System/Extensions/TurboGML/Others.yy",
+    "path":"folders/1_System/3_Extensions/TurboGML/Others.yy",
   },
   "resourceType":"GMNotes",
   "resourceVersion":"2.0",

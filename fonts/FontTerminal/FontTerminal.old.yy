@@ -120,8 +120,8 @@
   "maintainGms1Font":false,
   "name":"FontTerminal",
   "parent":{
-    "name":"System",
-    "path":"folders/System.yy",
+    "name":"1_General",
+    "path":"folders/4_User Interfaces/1_General.yy",
   },
   "pointRounding":0,
   "ranges":[
